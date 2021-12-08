@@ -34,7 +34,7 @@ export default function SelectReasons({
         >
           &#8203;
         </span>
-        <div className='inline-block align-bottom bg-gray-200 rounded-t-lg text-center text-gray-800 overflow-hidden shadow-xl transform transition-all w-full min-h-1/2'>
+        <div className='inline-block bg-gray-200 rounded-t-lg text-center max-w-xl text-gray-800 overflow-hidden shadow-xl w-full min-h-1/2 fixed bottom-0 ml:-ml-72 ml:left-1/2'>
           <div className='w-full h-full flex flex-col px-4'>
             <span className='border-b border-solid border-gray-300 h-9 pt-2 text-center'>
               {' '}
