@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'SFPro';
+  src: url('/assets/fonts/FontsFree-Net-SFProText-Regular.ttf');
+}
