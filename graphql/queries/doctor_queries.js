@@ -1,8 +1,8 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
 export const GET_DOCTOR_DETAILS = gql`
-  query {
-    doctor(id: 1) {
+  query getDoctorQuery($id: ID!) {
+    doctor(id: $id) {
       data {
         id
         attributes {

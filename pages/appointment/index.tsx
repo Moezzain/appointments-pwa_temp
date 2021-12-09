@@ -9,12 +9,14 @@ import {
   doctor_mock,
   patient_doctor_reasons_mock as patient_reasons_mock,
 } from '../../mock-data/appointment';
-import { GET_DOCTOR_DETAILS } from '../../graphql/queries/doctor_quiries';
+import { GET_DOCTOR_DETAILS } from '../../graphql/queries/doctor_queries';
 
 const AppointmentHome: NextPage = () => {
   const [open, setOpen] = useState(true);
   const [reasons, setReasons] = useState([]);
-  const { loading, error, data } = useQuery(GET_DOCTOR_DETAILS);
+  const { loading, error, data } = useQuery(GET_DOCTOR_DETAILS, {
+    variables: { id: doctor_mock.id },
+  });
 
   return (
     <div className='w-full'>

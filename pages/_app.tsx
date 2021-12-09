@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import 'tailwindcss/tailwind.css';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient, { gql } from 'apollo-boost';
+import ApolloClient from 'apollo-boost';
 import type { AppProps } from 'next/app';
 import Navbar from '../components/layout/Navbar';
 
