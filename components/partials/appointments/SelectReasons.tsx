@@ -6,10 +6,12 @@ export default function SelectReasons({
   setReasons,
   patient_reasons,
   hide,
+  open,
 }: {
   setReasons: any;
   patient_reasons: Array<any>;
   hide: Function;
+  open: boolean;
 }) {
   const [tempReasons, setTempReasons] = useState(patient_reasons);
   const changeToggleBox = (
@@ -22,19 +24,19 @@ export default function SelectReasons({
   };
 
   return (
-    <div className='fixed z-10 inset-0 overflow-y-auto'>
+    <div className='fixed z-10inset-0 overflow-y-auto transition-all'>
       <div className='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 sm:block sm:p-0'>
         <div
-          className='fixed inset-0 bg-black bg-opacity-30 transition-opacity'
+          className={`fixed inset-0 bg-black bg-opacity-30 transition-opacity ${
+            !open && 'hidden'
+          }`}
           aria-hidden='true'
         ></div>
-        <span
-          className='hidden sm:inline-block sm:align-bottom sm:h-screen'
-          aria-hidden='true'
+        <div
+          className={`${
+            !open ? 'h-0' : 'h-96'
+          } inline-block bg-gray-200 rounded-t-lg text-center max-w-xl text-gray-800 overflow-hidden shadow-xl w-full fixed bottom-0 ml:-ml-72 ml:left-1/2 transition-all`}
         >
-          &#8203;
-        </span>
-        <div className='inline-block bg-gray-200 rounded-t-lg text-center max-w-xl text-gray-800 overflow-hidden shadow-xl w-full min-h-1/2 fixed bottom-0 ml:-ml-72 ml:left-1/2'>
           <div className='w-full h-full flex flex-col px-4'>
             <span className='border-b border-solid border-gray-300 h-9 pt-2 text-center'>
               {' '}
@@ -49,10 +51,10 @@ export default function SelectReasons({
                   <td className='w-1/4'>select</td>
                 </tr>
                 {patient_reasons.map((reason, index) => (
-                  <tr className='h-12'>
+                  <tr key={index} className='h-12'>
                     <td
                       className={`border-b border-gray-300 bg-white ${
-                        index === 1 && 'rounded-tl-lg'
+                        index === 0 && 'rounded-tl-lg'
                       }`}
                     >
                       {reason.reason}
@@ -65,7 +67,7 @@ export default function SelectReasons({
                     </td>
                     <td
                       className={`border-b border-gray-300 bg-white ${
-                        index === 1 && 'rounded-tl-lg'
+                        index === 0 && 'rounded-tr-lg'
                       }`}
                     >
                       {' '}

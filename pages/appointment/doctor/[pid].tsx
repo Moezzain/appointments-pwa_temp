@@ -10,6 +10,8 @@ import {
   doctor_mock,
   patient_doctor_reasons_mock as patient_reasons_mock,
 } from '../../../mock-data/appointment';
+import { getDataFromTree } from '@apollo/client/react/ssr';
+import withApollo from '../../../graphql/withApollo';
 import { GET_DOCTOR_DETAILS } from '../../../graphql/queries/doctor_queries';
 
 const AppointmentHome: NextPage = () => {
@@ -38,15 +40,14 @@ const AppointmentHome: NextPage = () => {
           openEdit={() => open !== true && setOpen(true)}
         />
       )}
-      {open && (
-        <SelectReasons
-          setReasons={setReasons}
-          patient_reasons={patient_reasons_mock}
-          hide={() => open !== false && setOpen(false)}
-        />
-      )}
+      <SelectReasons
+        setReasons={setReasons}
+        patient_reasons={patient_reasons_mock}
+        hide={() => open !== false && setOpen(false)}
+        open={open}
+      />
     </div>
   );
 };
 
-export default AppointmentHome;
+export default withApollo(AppointmentHome, { getDataFromTree });

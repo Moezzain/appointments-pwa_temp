@@ -20,7 +20,9 @@ export default function DoctorReasonsBox({
           </span>
         </div>
         <div className='text-gray-600'>
-          {reasons.map(({ reason, check }) => check && <p>{reason}</p>)}
+          {reasons.map(
+            ({ reason, check }, index) => check && <p key={index}>{reason}</p>
+          )}
         </div>
         <span className='text-blue-700 font-semibold text-sm mb-5 cursor-pointer'>
           Click here to add reasons{' '}
