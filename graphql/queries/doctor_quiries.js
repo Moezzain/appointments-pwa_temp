@@ -1,3 +1,5 @@
+import { gql } from 'apollo-boost';
+
 export const GET_DOCTOR_DETAILS = gql`
   query {
     doctor(id: 1) {

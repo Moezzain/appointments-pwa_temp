@@ -2,7 +2,6 @@ import { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import DoctorInformation from '../../components/partials/appointments/DoctorInformation';
 import SelectReasons from '../../components/partials/appointments/SelectReasons';
 import DoctorReasonsBox from '../../components/partials/appointments/DoctorReasonsBox';
