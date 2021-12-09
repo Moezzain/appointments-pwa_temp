@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <meta name='description' content='Appointment creation flow' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Link href='/appointment'>
+      <Link href='/appointment/doctor/1'>
         <span className='text-blue-700 cursor-pointer'>Create Appointment</span>
       </Link>
     </div>

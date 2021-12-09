@@ -1,21 +1,25 @@
 import { useState } from 'react';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import DoctorInformation from '../../components/partials/appointments/DoctorInformation';
-import SelectReasons from '../../components/partials/appointments/SelectReasons';
-import DoctorReasonsBox from '../../components/partials/appointments/DoctorReasonsBox';
+import DoctorInformation from '../../../components/partials/appointments/DoctorInformation';
+import SelectReasons from '../../../components/partials/appointments/SelectReasons';
+import DoctorReasonsBox from '../../../components/partials/appointments/DoctorReasonsBox';
 import {
   doctor_mock,
   patient_doctor_reasons_mock as patient_reasons_mock,
-} from '../../mock-data/appointment';
-import { GET_DOCTOR_DETAILS } from '../../graphql/queries/doctor_queries';
+} from '../../../mock-data/appointment';
+import { GET_DOCTOR_DETAILS } from '../../../graphql/queries/doctor_queries';
 
 const AppointmentHome: NextPage = () => {
+  const router = useRouter();
+  const { pid } = router.query;
+
   const [open, setOpen] = useState(true);
   const [reasons, setReasons] = useState([]);
   const { loading, error, data } = useQuery(GET_DOCTOR_DETAILS, {
-    variables: { id: doctor_mock.id },
+    variables: { id: pid },
   });
 
   return (
