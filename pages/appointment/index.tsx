@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 import DoctorInformation from '../../components/partials/appointments/DoctorInformation';
 import SelectReasons from '../../components/partials/appointments/SelectReasons';
 import DoctorReasonsBox from '../../components/partials/appointments/DoctorReasonsBox';
@@ -10,23 +10,7 @@ import {
   doctor_mock,
   patient_doctor_reasons_mock as patient_reasons_mock,
 } from '../../mock-data/appointment';
-
-const GET_DOCTOR_DETAILS = gql`
-query {
-  doctor(id: 1) {
-    data {
-      id
-      attributes {
-        doctor_name
-        doctor_specialty
-        address
-        PPO
-        image
-      }
-    }
-  }
-}
-`;
+import { GET_DOCTOR_DETAILS } from '../../graphql/queries/doctor_quiries';
 
 const AppointmentHome: NextPage = () => {
   const [open, setOpen] = useState(true);
@@ -40,7 +24,9 @@ const AppointmentHome: NextPage = () => {
         <meta name='description' content='Appointment creation flow' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      {data?.doctor && <DoctorInformation doctor={data?.doctor?.data?.attributes} /> }
+      {data?.doctor && (
+        <DoctorInformation doctor={data?.doctor?.data?.attributes} />
+      )}
       {reasons.length > 0 && (
         <DoctorReasonsBox
           reasons={reasons}
