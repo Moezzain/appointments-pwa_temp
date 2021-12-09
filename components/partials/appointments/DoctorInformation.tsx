@@ -4,7 +4,7 @@ export default function DoctorInformation({ doctor }: { doctor: any }) {
       <div className='relative'>
         <img
           className='w-11 h-11'
-          src='/assets/images/doctor-image.png'
+          src={doctor.image}
           alt='doctor image'
         />
         <span className='flex justify-center items-center absolute left-0 bg-blue-500 text-white rounded-md -top-2 text-xs w-8 h-4'>
