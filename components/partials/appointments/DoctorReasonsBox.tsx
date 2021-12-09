@@ -21,7 +21,7 @@ export default function DoctorReasonsBox({
             Edit
           </span>
         </div>
-        <div className='text-gray-600'>
+        <div className='text-gray-600 text-xs'>
           {reasons.map(
             ({ reason, check }, index) => check && <p key={index}>{reason}</p>
           )}

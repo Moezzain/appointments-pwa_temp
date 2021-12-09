@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import DoctorInformation from '../../../components/partials/appointments/DoctorInformation';
 import SelectReasons from '../../../components/partials/appointments/SelectReasons';
 import DoctorReasonsBox from '../../../components/partials/appointments/DoctorReasonsBox';
@@ -44,6 +44,19 @@ const AppointmentHome: NextPage = () => {
           openNew={() => openNew !== true && setOpenNew(true)}
         />
       )}
+      {/* Estimate time Required */}
+
+      {/*  */}
+      {/* Describe other reasons */}
+
+      {/*  */}
+      {/* consult types */}
+
+      {/*  */}
+      {/* Notice */}
+
+      {/*  */}
+
       <SelectReasons
         setReasons={setReasonsPrev}
         patient_reasons={patient_reasons_mock}
@@ -56,6 +69,9 @@ const AppointmentHome: NextPage = () => {
         hide={() => openNew !== false && setOpenNew(false)}
         open={openNew}
       />
+      {/* bottom buttons */}
+
+      {/*  */}
     </div>
   );
 };
