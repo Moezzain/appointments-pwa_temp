@@ -3,9 +3,11 @@ import Button from '../../elements/Button';
 export default function DoctorReasonsBox({
   reasons,
   openEdit,
+  openNew
 }: {
   reasons: Array<any>;
   openEdit: Function;
+  openNew: Function;
 }) {
   return (
     <div className='w-full flex  justify-between px-4'>
@@ -24,7 +26,7 @@ export default function DoctorReasonsBox({
             ({ reason, check }, index) => check && <p key={index}>{reason}</p>
           )}
         </div>
-        <span className='text-blue-700 font-semibold text-sm mb-5 cursor-pointer'>
+        <span onClick={() => openNew()} className='text-blue-700 font-semibold text-sm mb-5 cursor-pointer'>
           Click here to add reasons{' '}
         </span>
         <div className='flex justify-center'>

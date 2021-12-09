@@ -6,7 +6,7 @@ export const doctor_mock = {
   PPO: true,
 };
 
-export const patient_doctor_reasons_mock = [
+export const patient_doctor_prev_reasons_mock = [
   {
     id: 1,
     reason: 'Reason 1',
@@ -34,5 +34,36 @@ export const patient_doctor_reasons_mock = [
     last_seen: new Date().toISOString().slice(0, 10),
     future_appointments: new Date().toISOString().slice(0, 10),
     check: true,
+  },
+];
+
+export const patient_doctor_new_reasons_mock = [
+  {
+    id: 1,
+    reason: 'Reason 5',
+    last_seen: new Date().toISOString().slice(0, 10),
+    future_appointments: new Date().toISOString().slice(0, 10),
+    check: false,
+  },
+  {
+    id: 2,
+    reason: 'Reason 6',
+    last_seen: new Date().toISOString().slice(0, 10),
+    future_appointments: new Date().toISOString().slice(0, 10),
+    check: false,
+  },
+  {
+    id: 3,
+    reason: 'Reason 7',
+    last_seen: new Date().toISOString().slice(0, 10),
+    future_appointments: new Date().toISOString().slice(0, 10),
+    check: false,
+  },
+  {
+    id: 4,
+    reason: 'Reason 8',
+    last_seen: new Date().toISOString().slice(0, 10),
+    future_appointments: new Date().toISOString().slice(0, 10),
+    check: false,
   },
 ];

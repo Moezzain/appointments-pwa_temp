@@ -8,7 +8,8 @@ import SelectReasons from '../../../components/partials/appointments/SelectReaso
 import DoctorReasonsBox from '../../../components/partials/appointments/DoctorReasonsBox';
 import {
   doctor_mock,
-  patient_doctor_reasons_mock as patient_reasons_mock,
+  patient_doctor_prev_reasons_mock as patient_reasons_mock,
+  patient_doctor_new_reasons_mock as patient_reasons_new_mock,
 } from '../../../mock-data/appointment';
 import { getDataFromTree } from '@apollo/client/react/ssr';
 import withApollo from '../../../graphql/withApollo';
@@ -18,8 +19,10 @@ const AppointmentHome: NextPage = () => {
   const router = useRouter();
   const { pid } = router.query;
 
-  const [open, setOpen] = useState(true);
-  const [reasons, setReasons] = useState([]);
+  const [openPrev, setOpenPrev] = useState(true);
+  const [openNew, setOpenNew] = useState(false);
+  const [reasonsPrev, setReasonsPrev] = useState([]);
+  const [reasonsNew, setReasonsNew] = useState([]);
   const { loading, error, data } = useQuery(GET_DOCTOR_DETAILS, {
     variables: { id: pid },
   });
@@ -34,17 +37,24 @@ const AppointmentHome: NextPage = () => {
       {data?.doctor && (
         <DoctorInformation doctor={data?.doctor?.data?.attributes} />
       )}
-      {reasons.length > 0 && (
+      {reasonsPrev.length + reasonsNew.length > 0 && (
         <DoctorReasonsBox
-          reasons={reasons}
-          openEdit={() => open !== true && setOpen(true)}
+          reasons={[...reasonsPrev, ...reasonsNew]}
+          openEdit={() => openPrev !== true && setOpenPrev(true)}
+          openNew={() => openNew !== true && setOpenNew(true)}
         />
       )}
       <SelectReasons
-        setReasons={setReasons}
+        setReasons={setReasonsPrev}
         patient_reasons={patient_reasons_mock}
-        hide={() => open !== false && setOpen(false)}
-        open={open}
+        hide={() => openPrev !== false && setOpenPrev(false)}
+        open={openPrev}
+      />
+      <SelectReasons
+        setReasons={setReasonsNew}
+        patient_reasons={patient_reasons_new_mock}
+        hide={() => openNew !== false && setOpenNew(false)}
+        open={openNew}
       />
     </div>
   );
